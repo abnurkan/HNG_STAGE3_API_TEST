@@ -1,0 +1,863 @@
+openapi: 3.0.3
+info:
+  title: HNG - Task 3 - OpenAPI 3.0
+  description: This is an HNG Boilertemplate based on the OpenAPI 3.0 specification
+  contact:
+    name: HNG - Group Gamma
+    url: http://hostingsite.com
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8000
+    description: Local server
+tags:
+  - name: dashboard
+    description: Get Dashboard Data
+  - name: Waitlist
+    description: Join Waitlist
+  - name: marketing
+    description: Get marketing Data
+  - name: invite
+    description: sent invitation link
+  - name: export
+    description: Export User Data
+    
+  - name: get-random-data
+    description: Get All Random Data
+  - name: post-random-data
+    description: create Random Data
+    
+  - name: get-random-data-by-id
+    description: Get specific Random Data
+  - name: update-random-data
+    description: update specific Random Data
+  - name: delete-random-data
+    description: delete specific Random Data
+    
+  - name: Chart-Data
+    description: Get Chart Data
+    
+  - name: Edit Content
+    description: Edit specific Content
+
+  - name: post-notification
+    description: Create a New notification
+
+  - name: get-notification
+    description: get all notification
+
+  - name: get-notification-id
+    description: Get specific Notification
+    
+  - name: update-notification
+    description: update specific notification
+
+  - name: delete-notification
+    description: Delete specific Notification
+  
+  - name: get-blog
+    description: Get All Blog Posts
+  - name: post-blog
+    description: Create a New Blog Post
+
+  - name: get-blog-id
+    description: Get Blog Post by ID
+  - name: update-blog
+    description: update specific Blog Posts
+  - name: delete-blog
+    description: delete specific Blog Posts
+    
+  - name: send-invite
+    description: Get All Blog Posts
+    
+  - name: get-languages-region
+    description: Get Language and Region Settings
+  - name: update-languages-region
+    description: Update language and region
+    
+  - name: Email-Template
+    description: Create Email Template
+  - name: get-Email-Template
+    description: get Email Template
+
+  - name: Email-Template-id
+    description: get specifc Email Template
+  - name: update-Email-Template
+    description: update specific Email Template
+
+  - name: delete-Email-Template
+    description: delete specific Email Template
+    
+
+components:
+  schemas:
+    MessageResponse:
+      type: object
+      properties:
+        message:
+          type: string
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        errors:
+          type: array
+          items:
+            type: string
+    RandomData:
+      type: object
+      properties:
+        id:
+          type: integer
+        data:
+          type: object
+    Notification:
+      type: object
+      properties:
+        id:
+          type: integer
+        data:
+          type: object
+    EmailTemplate:
+      type: object
+      properties:
+        id:
+          type: integer
+        data:
+          type: object
+      
+
+ 
+paths:
+  /dashboard:
+    get:
+      tags:
+        - dashboard
+      responses:
+        '200':
+          description: Dashboard data retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+
+  /waitlist:
+    post:
+      tags:
+        - Waitlist
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+      responses:
+        '200':
+          description: Joined waitlist successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+
+  /marketing:
+    get:
+      tags:
+        - marketing
+      responses:
+        '200':
+          description: Marketing content retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  content:
+                    type: string
+
+  /invite:
+    post:
+      tags:
+        - invite
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                message:
+                  type: string
+      responses:
+        '200':
+          description: Invite sent successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+        '500':
+          description: Failed to send invite
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /user-data/export:
+    get:
+      tags:
+        - export
+      summary: Export User Data
+      responses:
+        '200':
+          description: User data export successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  file_url:
+                    type: string
+        '404':
+          description: Data not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /random-data:
+    get:
+      tags:
+        - get-random-data
+      responses:
+        '200':
+          description: Random data retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RandomData'
+
+    post:
+      tags:
+        - post-random-data
+      summary: Create Random Data
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: object
+      responses:
+        '201':
+          description: Random data created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RandomData'
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /random-data/{id}:
+    get:
+      tags:
+        - get-random-data-by-id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Random data retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RandomData'
+        '404':
+          description: Random data not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+    put:
+      tags:
+        - update-random-data
+      summary: Update Random Data
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: object
+      responses:
+        '200':
+          description: Random data updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+        '404':
+          description: Random data not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+    delete:
+      tags:
+        - delete-random-data
+      summary: Delete Random Data
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Random data deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+        '404':
+          description: Random data not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /charts:
+    get:
+      tags:
+        - Chart-Data
+      responses:
+        '200':
+          description: Chart data retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+
+  /content/edit:
+    post:
+      tags:
+        - Edit Content
+      summary: Edit Content
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: string
+      responses:
+        '200':
+          description: Content edited successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /notifications:
+    post:
+      tags:
+        - post-notification
+      summary: Create a New notification
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                content:
+                  type: string
+                notification_id:
+                  type: integer
+      responses:
+        '201':
+          description: notification created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+    get:
+      tags:
+        - get-notification
+      summary: Get Notifications
+      responses:
+        '200':
+          description: Notifications retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Notification'
+                  
+  /notifications{id}:
+    get:
+      tags:
+        - get-notification-id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Notification retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+        '404':
+          description: Notification not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+
+    put:
+      tags:
+        - update-notification
+      summary: Update Notification
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                content:
+                  type: string
+      responses:
+        '200':
+          description: Notification updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+        '404':
+          description: Notification not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+    delete:
+      tags:
+        - delete-notification
+      summary: Delete Notification
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: notification deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+        '404':
+          description: Notification not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  
+  /blogs:
+    get:
+      tags:
+        - get-blog
+      summary: Get All Blog Posts
+      responses:
+        '200':
+          description: Blog posts retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MessageResponse'
+
+    post:
+      tags:
+        - post-blog
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                content:
+                  type: string
+                author_id:
+                  type: integer
+      responses:
+        '201':
+          description: Blog post created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /blogs/{id}:
+    get:
+      tags:
+        - get-blog-id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Blog post retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+        '404':
+          description: Blog post not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+    put:
+      tags:
+        - Update Blog Post
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                content:
+                  type: string
+      responses:
+        '200':
+          description: Blog post updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+        '404':
+          description: Blog post not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+    delete:
+      tags:
+        - delete-blog
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Blog post deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+        '404':
+          description: Blog post not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /invites:
+    post:
+      tags:
+        - send-invite
+      summary: Send Invite
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+      responses:
+        '200':
+          description: Invite sent successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+        '500':
+          description: Failed to send invite
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /languages-region:
+    get:
+      tags:
+        - get-languages-region
+      responses:
+        '200':
+          description: Language and region settings retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  language:
+                    type: string
+                  region:
+                    type: string
+  
+  /languages-region{id}: 
+    put:
+      tags:
+        - Update Blog Post
+      summary: Update language and region
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                language:
+                  type: string
+                region:
+                  type: string
+      responses:
+        '200':
+          description: language and region updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+        '404':
+          description: language and region not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /emails/templates:
+    post:
+      tags:
+        - Email-Template
+      summary: Create Email Template
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                body:
+                  type: string
+                creator_id:
+                  type: integer
+      responses:
+        '201':
+          description: Email template created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailTemplate'
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    get:
+      tags:
+        - get-Email-Template
+      summary: Get Email Templates
+      responses:
+        '200':
+          description: Email templates retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MessageResponse'
+                  
+  /emails/templates/{id}:
+    get:
+      tags:
+        - Email-Template
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Email template retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailTemplate'
+        '404':
+          description: Email template not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+    put:
+      tags:
+        - Update Blog Post
+      summary: Update Email Template
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                body:
+                  type: string
+      responses:
+        '200':
+          description: Email template updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+        '404':
+          description: Email template not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+    delete:
+      tags:
+        - delete-Email-Template
+      summary: Delete Email Template
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Email template deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+        '404':
+          description: Email template not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
