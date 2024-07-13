@@ -20,7 +20,6 @@ tags:
   - name: update settings
   - name: profile
   - name: contact us
-  - name: get contact us info
   - name: about us info    
   - name: cookies policy
   - name: accept cookies policy    
@@ -30,9 +29,6 @@ tags:
   - name: invite
   - name: export    
   - name: random-data    
-  - name: get-random-data-by-id
-  - name: update-random-data
-  - name: delete-random-data    
   - name: Chart-Data    
   - name: Edit Content
   - name: notification
