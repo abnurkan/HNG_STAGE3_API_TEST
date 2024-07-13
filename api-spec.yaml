@@ -37,8 +37,6 @@ tags:
   - name: Edit Content
   - name: notification
   - name: blog
-  - name: update-blog
-  - name: delete-blog
   - name: send-invite    
   - name: languages-region
   - name: Email-Template
