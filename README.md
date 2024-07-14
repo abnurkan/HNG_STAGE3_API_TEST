@@ -4,7 +4,7 @@ Group Gamma Comprehensive API and Database Design
 
 ### I. Introduction
 
-This document outlines the API and database design for a comprehensive SaaS platform. The platform includes features such as user authentication, organization management, payments, messaging, and various user-centric functionalities.
+This document outlines the API and database design for a comprehensive Software platform. The platform includes features such as user authentication, organization management, payments, messaging, and various user-centric functionalities.
 
 API Documentation: OpenAPI 3.0.0
 ### II. API Design
@@ -119,6 +119,7 @@ Our database is designed to support all the features of the SaaS platform effici
 
 DATABASE DESIGN
 Tables
+
 1- Users:
   - id (Primary Key, Integer)
   - username (String, Not Null, Unique)
