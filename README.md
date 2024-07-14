@@ -118,6 +118,8 @@ Payments
 Our database is designed to support all the features of the SaaS platform efficiently. It includes tables for users, organizations, roles, payments, content management, and more.
 
 DATABASE DESIGN
+
+
 Tables
 
 1- Users:
