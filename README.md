@@ -277,27 +277,22 @@ Clone the repository:
 git clone https://github.com/abnurkan/HNG_STAGE3_API_TEST.git
 
 
-Create a virtual environment.
+1. Create a virtual environment.
+ ```sh
     python3 -m venv .venv
-
-Activate virtual environment.
+ ```
+2. Activate virtual environment.
+```sh
     source /path/to/venv/bin/activate`
+```
+3. Install project dependencies `pip install -r requirements.txt`
+4. Create a .env file by copying the .env.sample file
+`cp .env.sample .env`
 
-Install project dependencies pip install -r requirements.txt
-
-Create a .env file by copying the .env.sample file cp .env.sample .env
-
-Set up the database:
-
- alembic init alembic
-
- alembic revision --autogenerate -m "Initial migration"
-
-alembic upgrade head
-
-Start server.
-
-python main.py
+5. Start server.
+ ```sh
+ python main.py
+```
 
 Access the API documentation:
 [url to access documentation ](https://abnurkan.github.io/HNG_STAGE3_API_TEST/)
@@ -310,18 +305,15 @@ Fork the repository
 Create a new branch (git checkout -b AmazingFeature)
 Make your changes
 
-Commit your changes (git commit -m 'Add some AmazingFeature')
+Commit your changes (git commit -m 'Add some functionality')
 
-Push to the branch (git push origin AmazingFeature)
+Push to the branch (git push origin functionality)
 
 Open a Pull Request
 
 Please ensure your code adheres to our coding standards and includes appropriate tests.
 
 # VII. License and Credits
-This project is licensed under the (LICENSE.md).
+This project is licensed under the (MIT.md).
 We would like to acknowledge the following open-source projects that made this possible:
 Openapi ()
-
-
-
