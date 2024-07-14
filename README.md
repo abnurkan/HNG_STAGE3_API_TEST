@@ -1,6 +1,4 @@
-# HNG_STAGE3_API_TEST
-
-Group Gamma Comprehensive API and Database Design
+# Group Gamma Comprehensive API and Database Design
 
 ### I. Introduction
 
