@@ -304,16 +304,24 @@ Access the API documentation:
 
 # VI. Contributing
 We welcome contributions to improve the API and database design. Please follow these steps to contribute:
+
 Fork the repository
+
 Create a new branch (git checkout -b AmazingFeature)
 Make your changes
+
 Commit your changes (git commit -m 'Add some AmazingFeature')
+
 Push to the branch (git push origin AmazingFeature)
+
 Open a Pull Request
+
 Please ensure your code adheres to our coding standards and includes appropriate tests.
-VII. License and Credits
+
+# VII. License and Credits
 This project is licensed under the (LICENSE.md).
 We would like to acknowledge the following open-source projects that made this possible:
 Openapi ()
+
 
 
