@@ -5,6 +5,7 @@ Group Gamma Comprehensive API and Database Design
 ### I. Introduction
 
 This document outlines the API and database design for a comprehensive SaaS platform. The platform includes features such as user authentication, organization management, payments, messaging, and various user-centric functionalities.
+
 API Documentation: OpenAPI 3.0.0
 ### II. API Design
 Our API is designed using OpenAPI 3.0.0 specification. It provides a comprehensive set of endpoints to interact with various features of the SaaS platform.
@@ -115,7 +116,7 @@ Payments
 #### III. Database Design
 
 Our database is designed to support all the features of the SaaS platform efficiently. It includes tables for users, organizations, roles, payments, content management, and more.
-Key Tables:
+
 DATABASE DESIGN
 Tables
 1- Users:
@@ -264,6 +265,7 @@ Full SQL Schema
 Entity Relationship Diagram:
 
 [link to Er diagram](https://abnurkan.github.io/HNG_STAGE3_API_TEST/)
+
 # IV. Implementation Details
 Architecture: [e.g., Microservices, Monolithic]
 Authentication: JWT-based authentication for API endpoints
@@ -308,5 +310,5 @@ VII. License and Credits
 This project is licensed under the (LICENSE.md).
 We would like to acknowledge the following open-source projects that made this possible:
 Openapi ()
-VIII. Conclusion
+
 
