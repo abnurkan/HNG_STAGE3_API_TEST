@@ -263,7 +263,7 @@ Entity Relationship Diagram (ERD) Overview
 Full SQL Schema
 Entity Relationship Diagram:
 
-[link to Er diagram]
+[link to Er diagram](https://abnurkan.github.io/HNG_STAGE3_API_TEST/)
 # IV. Implementation Details
 Architecture: [e.g., Microservices, Monolithic]
 Authentication: JWT-based authentication for API endpoints
@@ -271,7 +271,7 @@ Background Jobs: [e.g., Celery for asynchronous tasks]
 Caching: [e.g., Redis for caching frequently accessed data]
 # V. Setup and Usage
 Clone the repository:
-git clone 
+git clone https://github.com/abnurkan/HNG_STAGE3_API_TEST.git
 
 
 Create a virtual environment.
@@ -293,7 +293,7 @@ Start server.
 python main.py
 
 Access the API documentation:
-[url to access documentation ]
+[url to access documentation ](https://abnurkan.github.io/HNG_STAGE3_API_TEST/)
 
 # VI. Contributing
 We welcome contributions to improve the API and database design. Please follow these steps to contribute:
