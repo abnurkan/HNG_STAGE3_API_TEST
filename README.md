@@ -2,17 +2,17 @@
 
 Group Gamma Comprehensive API and Database Design
 
-###I. Introduction
+### I. Introduction
 
 This document outlines the API and database design for a comprehensive SaaS platform. The platform includes features such as user authentication, organization management, payments, messaging, and various user-centric functionalities.
 API Documentation: OpenAPI 3.0.0
-###II. API Design
+### II. API Design
 Our API is designed using OpenAPI 3.0.0 specification. It provides a comprehensive set of endpoints to interact with various features of the SaaS platform.
 Key Endpoints:
 
 
-##API AND DATABASE DESIGN
-###API Design
+## API AND DATABASE DESIGN
+### API Design
 1. Authentication
 - POST /auth/signup - User registration.
 - POST /auth/login - User login.
@@ -112,7 +112,7 @@ Payments
 - PUT /admin/email-templates/{id} - Update email template.
 - DELETE /admin/email-templates/{id} - Delete email template.
 
-####III. Database Design
+#### III. Database Design
 
 Our database is designed to support all the features of the SaaS platform efficiently. It includes tables for users, organizations, roles, payments, content management, and more.
 Key Tables:
@@ -264,14 +264,15 @@ Full SQL Schema
 Entity Relationship Diagram:
 
 [link to Er diagram]
-#IV. Implementation Details
+# IV. Implementation Details
 Architecture: [e.g., Microservices, Monolithic]
 Authentication: JWT-based authentication for API endpoints
 Background Jobs: [e.g., Celery for asynchronous tasks]
 Caching: [e.g., Redis for caching frequently accessed data]
-#V. Setup and Usage
+# V. Setup and Usage
 Clone the repository:
-git clone https://github.com/dammycute/straw_hat_team.git
+git clone 
+
 
 Create a virtual environment.
     python3 -m venv .venv
@@ -292,9 +293,9 @@ Start server.
 python main.py
 
 Access the API documentation:
-url to access documentation 
+[url to access documentation ]
 
-#VI. Contributing
+# VI. Contributing
 We welcome contributions to improve the API and database design. Please follow these steps to contribute:
 Fork the repository
 Create a new branch (git checkout -b AmazingFeature)
