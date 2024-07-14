@@ -284,8 +284,11 @@ Activate virtual environment.
     source /path/to/venv/bin/activate`
 
 Install project dependencies pip install -r requirements.txt
+
 Create a .env file by copying the .env.sample file cp .env.sample .env
+
 Set up the database:
+
  alembic init alembic
 
  alembic revision --autogenerate -m "Initial migration"
@@ -293,6 +296,7 @@ Set up the database:
 alembic upgrade head
 
 Start server.
+
 python main.py
 
 Access the API documentation:
