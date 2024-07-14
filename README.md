@@ -292,8 +292,7 @@ Start server.
 python main.py
 
 Access the API documentation:
-[URL or command to access API documentation]
-
+url to access documentation 
 
 VI. Contributing
 We welcome contributions to improve the API and database design. Please follow these steps to contribute:
